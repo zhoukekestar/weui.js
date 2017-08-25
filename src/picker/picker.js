@@ -1,13 +1,13 @@
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
-* 
+*
 * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-* 
+*
 * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
-* 
+*
 *       http://opensource.org/licenses/MIT
-* 
+*
 * Unless required by applicable law or agreed to in writing, software distributed under the License is
 * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 * either express or implied. See the License for the specific language governing permissions and
@@ -184,6 +184,8 @@ function picker() {
     // 配置项
     const options = arguments[arguments.length - 1];
     const defaults = $.extend({
+        rowHeight: 34,        // 列表每一行的高度
+        bodyHeight: 7 * 34,   // picker的高度，用于辅助点击滚动的计算
         id: 'default',
         className: '',
         container: 'body',
@@ -253,6 +255,8 @@ function picker() {
             }
         }
         $picker.find('.weui-picker__group').eq(level).scroll({
+            rowHeight: defaults.rowHeight,
+            bodyHeight: defaults.bodyHeight,
             items: items,
             temp: lineTemp[level],
             onChange: function (item, index) {
